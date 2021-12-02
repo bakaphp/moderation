@@ -8,10 +8,10 @@ $dotenv->load();
 return [
     'paths' => [
         'migrations' => [
-            getenv('WORKFLOW_CORE_PATH') . '/storage/db/migrations',
+            getenv('PHINX_CONFIG_DIR') . '/storage/db/migrations',
         ],
         'seeds' => [
-            getenv('WORKFLOW_CORE_PATH') . '/storage/db/seeds',
+            getenv('PHINX_CONFIG_DIR') . '/storage/db/seeds',
         ],
     ],
     'environments' => [
@@ -19,19 +19,19 @@ return [
         'default_database' => 'development',
         'production' => [
             'adapter' => 'mysql',
-            'host' => getenv('WORKFLOW_MYSQL_HOST'),
-            'name' => getenv('WORKFLOW_MYSQL_NAME'),
-            'user' => getenv('WORKFLOW_MYSQL_USER'),
-            'pass' => getenv('WORKFLOW_MYSQL_PASS'),
+            'host' => getenv('MODERATION_MYSQL_HOST'),
+            'name' => getenv('MODERATION_MYSQL_NAME'),
+            'user' => getenv('MODERATION_MYSQL_USER'),
+            'pass' => getenv('MODERATION_MYSQL_PASS'),
             'port' => 3306,
             'charset' => 'utf8',
         ],
         'development' => [
             'adapter' => 'mysql',
-            'host' => getenv('WORKFLOW_MYSQL_HOST'),
-            'name' => getenv('WORKFLOW_MYSQL_NAME'),
-            'user' => getenv('WORKFLOW_MYSQL_USER'),
-            'pass' => getenv('WORKFLOW_MYSQL_PASS'),
+            'host' => getenv('MODERATION_MYSQL_HOST'),
+            'name' => getenv('MODERATION_MYSQL_NAME'),
+            'user' => getenv('MODERATION_MYSQL_USER'),
+            'pass' => getenv('MODERATION_MYSQL_PASS'),
             'port' => 3306,
             'charset' => 'utf8',
         ],
