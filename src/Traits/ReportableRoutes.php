@@ -19,7 +19,6 @@ trait ReportableRoutes
         'description',
     ];
 
-
     /**
      * Init Controller.
      *
@@ -28,9 +27,6 @@ trait ReportableRoutes
     public function onConstruct()
     {
         $this->model = new Reports();
-        $this->softDelete = 1;
-        //$this->dto = DtoTopics::class;
-        //$this->dtoMapper = new TopicsMapper();
 
         $this->model->users_id = $this->userData->getId();
         $this->model->apps_id = $this->app->getId();
