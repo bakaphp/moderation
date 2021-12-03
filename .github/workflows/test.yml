@@ -124,8 +124,11 @@ jobs:
       - name: Phinx Migrate Kanvas Seed
         run: vendor/bin/phinx seed:run -c kanvas-phinx.php
 
-      - name: Setup Env Variable
-        run: cp storage/ci/.env.example .env
+      - name: Phinx migrate 
+        run: vendor/bin/phinx migrate 
+
+      - name: Phinx Migrate Seed
+        run: vendor/bin/phinx seed:run
 
       - name: Run test
         if: success()
