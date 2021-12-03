@@ -4,9 +4,12 @@ declare(strict_types=1);
 namespace Kanvas\Moderation\Models;
 
 use Baka\Contracts\Database\ModelInterface;
+use Baka\Contracts\EventsManager\EventManagerAwareTrait;
 
 class Reports extends BaseModel
 {
+    use EventManagerAwareTrait;
+
     public int $apps_id;
     public string $entity_namespace;
     public string $entity_id;
@@ -78,5 +81,15 @@ class Reports extends BaseModel
     public function isSolved() : bool
     {
         return $this->solved_by > 0;
+    }
+
+    /**
+     * Event after create.
+     *
+     * @return void
+     */
+    public function afterCreate()
+    {
+        $this->fire('moderation:createReport', $this);
     }
 }

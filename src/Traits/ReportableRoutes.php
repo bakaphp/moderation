@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Kanvas\Moderation\Traits;
 
 use Baka\Contracts\Http\Api\CrudBehaviorTrait;
+use Kanvas\Moderation\Enums\Report;
 use Kanvas\Moderation\Models\Reports;
 
 trait ReportableRoutes
@@ -30,6 +31,7 @@ trait ReportableRoutes
 
         $this->model->users_id = $this->userData->getId();
         $this->model->apps_id = $this->app->getId();
+        $this->model->report_status_id = Report::PENDING;
     }
 
     /**

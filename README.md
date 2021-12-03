@@ -7,7 +7,7 @@ This package allows you to add a moderation layer to any Kanvas Application
 
 # Usage
 
-For the public facing controller , create a route and implemente the ReportableRoute Trait
+For the public facing controller , create a route and implement the ReportableRoute Trait
 
 ```php
 
@@ -17,10 +17,24 @@ class ReportsController
 }
 
 ```
+
+To list the different report types for the current app , use the ReportableTypesRoutes Trait
+
+```php
+
+class TypesController
+{
+    use ReportableTypesRoutes;
+}
+
+```
+
+
 # Routes
 
 User report creation:
 
 ```php
-Route::post('/reports')->controller('Reports\IndexController')->action('create'),
+Route::post('/reports')->controller('Moderation\ReportsController')->action('create'),
+Route::get('/report-types')->controller('Moderation\TypesController')->action('index'),
 ```

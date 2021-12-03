@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Kanvas\Moderation\Models;
 
-class ReportsStatus extends BaseModel
+class ReportsTypes extends BaseModel
 {
     public int $apps_id;
     public int $priorities_id;
