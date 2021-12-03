@@ -5,6 +5,7 @@ namespace Kanvas\Moderation\Models;
 
 use Baka\Contracts\Database\ModelInterface;
 use Baka\Contracts\EventsManager\EventManagerAwareTrait;
+use Canvas\Models\Users;
 
 class Reports extends BaseModel
 {
