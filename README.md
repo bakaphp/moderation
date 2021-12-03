@@ -29,6 +29,17 @@ class TypesController
 
 ```
 
+Exposing the route to block users
+
+```php
+
+class UsersController
+{
+    use BlockedUserRoutes;
+}
+
+```
+
 
 # Routes
 
@@ -37,4 +48,11 @@ User report creation:
 ```php
 Route::post('/reports')->controller('Moderation\ReportsController')->action('create'),
 Route::get('/report-types')->controller('Moderation\TypesController')->action('index'),
+```
+
+Blocked / Unblock user routes:
+
+```php
+Route::get('/block-users')->controller('Users\BlockUserController')->action('index'),
+Route::post('/block-users/{id}')->controller('Users\BlockUserController')->action('blockUser'),
 ```

@@ -39,4 +39,14 @@ class BlockedUsers extends BaseModel
             ]
         );
     }
+
+    /**
+     * Event after create.
+     *
+     * @return void
+     */
+    public function afterCreate()
+    {
+        $this->fire('moderation:blockedUser', $this);
+    }
 }
