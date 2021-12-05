@@ -5,7 +5,7 @@ namespace Kanvas\Moderation\Models;
 
 class ReportsStatus extends BaseModel
 {
-    public int $apps_id;
+    public int $apps_id = 0;
     public string $name;
     public ?string $description = null;
 
