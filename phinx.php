@@ -14,6 +14,7 @@ return [
             getenv('PHINX_CONFIG_DIR') . '/storage/db/seeds',
         ],
     ],
+
     'environments' => [
         'default_migration_table' => 'ut_migrations',
         'default_database' => 'development',
