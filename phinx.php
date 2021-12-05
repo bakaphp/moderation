@@ -8,13 +8,12 @@ $dotenv->load();
 return [
     'paths' => [
         'migrations' => [
-            getenv('PHINX_CONFIG_DIR') . '/storage/db/migrations',
+            getenv('WORKFLOW_CORE_PATH') . '/storage/db/migrations',
         ],
         'seeds' => [
-            getenv('PHINX_CONFIG_DIR') . '/storage/db/seeds',
+            getenv('WORKFLOW_CORE_PATH') . '/storage/db/seeds',
         ],
     ],
-
     'environments' => [
         'default_migration_table' => 'ut_migrations',
         'default_database' => 'development',
