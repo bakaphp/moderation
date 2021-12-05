@@ -6,7 +6,6 @@
 # https://help.github.com/articles/ignoring-files/#create-a-global-gitignore
 
 .env
-phinx.php
 composer.lock
 tests/_output/
 vendor/
