@@ -6,8 +6,9 @@ namespace Kanvas\Moderation\Models;
 use Baka\Contracts\Database\ModelInterface;
 use Baka\Contracts\EventsManager\EventManagerAwareTrait;
 use Canvas\Models\Users;
+use Kanvas\Content\Contracts\ReportInterface;
 
-class Reports extends BaseModel
+class Reports extends BaseModel implements ReportInterface
 {
     use EventManagerAwareTrait;
 
@@ -79,7 +80,17 @@ class Reports extends BaseModel
      *
      * @return bool
      */
-    public function isSolved() : bool
+    public function isOpen() : bool
+    {
+        return $this->solved_by === 0;
+    }
+
+    /**
+     * Is this report solved?
+     *
+     * @return bool
+     */
+    public function isClosed() : bool
     {
         return $this->solved_by > 0;
     }

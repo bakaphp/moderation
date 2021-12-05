@@ -17,6 +17,7 @@ class Init extends AbstractSeed
         $this->table('reports_types')
             ->insert([
                 [
+                    'id' => 1,
                     'apps_id' => 1,
                     'priorities_id' => 1,
                     'entity_namespace' => 'Kanvas\Content\Contracts\ContentInterface',
@@ -24,6 +25,7 @@ class Init extends AbstractSeed
                     'description' => 'Any Content type entity',
                     'created_at' => date('Y-m-d H:i:s'),
                 ], [
+                    'id' => 2,
                     'apps_id' => 1,
                     'priorities_id' => 1,
                     'entity_namespace' => 'Kanvas\Content\Contracts\CommentInterface',

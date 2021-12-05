@@ -9,15 +9,16 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Frederick",
-            "email": "frederickpeal@gmail.com"
+            "name": "kaioken",
+            "email": "max@mctekk.com"
         }
     ],
     "type": "project",
     "require": {
         "php": ">= 7.4",
         "ext-phalcon": ">=4",
-        "canvas/core": "^0.3"
+        "canvas/core": "^0.3",
+        "kanvas/content": "^0.1"
     },
     "require-dev": {
         "codeception/codeception": "^4.1",
