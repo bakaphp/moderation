@@ -3,10 +3,13 @@ declare(strict_types=1);
 
 namespace Kanvas\Moderation\Models;
 
+use Baka\Contracts\EventsManager\EventManagerAwareTrait;
 use Canvas\Models\Users;
 
 class BlockedUsers extends BaseModel
 {
+    use EventManagerAwareTrait;
+
     public int $users_id;
     public int $blocked_users_id;
     public int $apps_id;

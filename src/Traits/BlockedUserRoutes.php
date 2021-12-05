@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Kanvas\Moderation\Traits;
 
 use Baka\Contracts\Http\Api\CrudBehaviorTrait;
+use Baka\Http\Exception\BadRequestException;
 use Canvas\Models\Users;
 use Kanvas\Moderation\Models\BlockedUsers;
 use Phalcon\Http\Response;
@@ -38,15 +39,19 @@ trait BlockedUserRoutes
      */
     public function blockUser(int $userId) : Response
     {
+        if ($this->userData->getId() == $userId) {
+            throw new BadRequestException('You can not block yourself');
+        }
+
         $user = Users::findFirstOrFail($userId);
 
         $blockedUser = BlockedUsers::findFirst([
             'conditions' => 'users_id = :users_id:
-                            AND blocked_user_id = :blocked_user_id:
+                            AND blocked_users_id = :blocked_users_id:
                             AND is_deleted = 0',
             'bind' => [
                 'users_id' => $this->userData->getId(),
-                'blocked_user_id' => $user->getId()
+                'blocked_users_id' => $user->getId()
             ]
         ]);
 
@@ -55,7 +60,7 @@ trait BlockedUserRoutes
         } else {
             $blockedUser = new BlockedUsers();
             $blockedUser->users_id = $this->userData->getId();
-            $blockedUser->blocked_user_id = $user->getId();
+            $blockedUser->blocked_users_id = $user->getId();
             $blockedUser->apps_id = $this->app->getId();
             $blockedUser->saveOrFail();
         }
