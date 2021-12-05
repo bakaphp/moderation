@@ -19,7 +19,7 @@ class Reports extends BaseModel
     public int $report_status_id;
     public string $title;
     public ?string $description = null;
-    public int $solved_by;
+    public int $solved_by = 0;
 
     /**
      * Initialize method for model.

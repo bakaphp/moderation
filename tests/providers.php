@@ -10,12 +10,14 @@ use Canvas\Providers\DatabaseProvider as KanvasDatabaseProvider;
 use Canvas\Providers\MapperProvider;
 use Canvas\Providers\ModelsCacheProvider;
 use Canvas\Providers\ModelsMetadataProvider;
+use Canvas\Providers\QueueProvider;
 use Canvas\Providers\RegistryProvider;
+use Canvas\Providers\RequestProvider;
+use Canvas\Providers\ResponseProvider;
 use Canvas\Providers\UserProvider;
 use Canvas\Providers\ViewProvider;
-use Kanvas\Workflow\Providers\DatabaseProvider as WorkflowDatabaseProvider;
-use Kanvas\Workflow\Test\Support\Providers\ConfigProvider;
-use Canvas\Providers\QueueProvider;
+use Kanvas\Moderation\Providers\DatabaseProvider as ModerationDatabaseProvider;
+use Kanvas\Moderation\Test\Support\Providers\ConfigProvider;
 
 return [
     KanvasDatabaseProvider::class,
@@ -23,7 +25,9 @@ return [
     RegistryProvider::class,
     AppProvider::class,
     UserProvider::class,
-    WorkflowDatabaseProvider::class,
+    ModerationDatabaseProvider::class,
+    RequestProvider::class,
+    ResponseProvider::class,
     CacheDataProvider::class,
     ModelsCacheProvider::class,
     MapperProvider::class,

@@ -46,7 +46,7 @@ trait ReportableRoutes
     {
         $this->request->validate([
             'entity_namespace' => 'required|string',
-            'entity_id' => 'required|int',
+            'entity_id' => 'required',
             'report_type_id' => 'required|int',
             'title' => 'required|string',
             'description' => 'string',

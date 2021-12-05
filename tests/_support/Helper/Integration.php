@@ -2,8 +2,7 @@
 
 namespace Helper;
 
-// use Canvas\Bootstrap\IntegrationTests;
-
+use Canvas\Http\Request;
 use Canvas\Models\Apps;
 use Canvas\Models\Users;
 use Codeception\Module;
@@ -25,7 +24,9 @@ class Integration extends Module
     protected $diContainer = null;
     protected $savedModels = [];
     protected $savedRecords = [];
-    protected $config = ['rollback' => false];
+    protected $config = [
+        'rollback' => false
+    ];
 
     /**
      * Test initializer.
@@ -39,6 +40,7 @@ class Integration extends Module
         $this->diContainer->setShared('userData', Users::findFirst(1));
         $this->diContainer->setShared('userProvider', new Users());
         $this->diContainer->setShared('app', new Apps());
+        $this->diContainer->setShared('request', new Request());
 
         $this->savedModels = [];
         $this->savedRecords = [];
