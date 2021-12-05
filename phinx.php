@@ -8,10 +8,10 @@ $dotenv->load();
 return [
     'paths' => [
         'migrations' => [
-            getenv('WORKFLOW_CORE_PATH') . '/storage/db/migrations',
+            getenv('MODERATION_CORE_PATH') . '/storage/db/migrations',
         ],
         'seeds' => [
-            getenv('WORKFLOW_CORE_PATH') . '/storage/db/seeds',
+            getenv('MODERATION_CORE_PATH') . '/storage/db/seeds',
         ],
     ],
     'environments' => [
