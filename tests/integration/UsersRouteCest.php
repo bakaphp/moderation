@@ -13,7 +13,7 @@ class UsersRouteCest
 {
     public function testBockUsers(IntegrationTester $I) : void
     {
-        $user = Users::findFirst('id > 1');
+        $user = Users::findFirst('id != ' . $I->grabDi()->get('userData')->getId());
         $userController = new UsersController();
         $response = $userController->blockUser($user->getId());
         $content = json_decode($response->getContent(), true);
