@@ -6,13 +6,17 @@ namespace Kanvas\Moderation\Traits;
 
 use Baka\Contracts\Http\Api\CrudBehaviorTrait;
 use Baka\Http\Exception\BadRequestException;
+use Canvas\Contracts\Controllers\ProcessOutputMapperTrait;
 use Canvas\Models\Users;
+use Kanvas\Moderation\DTO\BlockedUser;
+use Kanvas\Moderation\Mappers\BlockedUser as MappersBlockedUser;
 use Kanvas\Moderation\Models\BlockedUsers;
 use Phalcon\Http\Response;
 
 trait BlockedUserRoutes
 {
     use CrudBehaviorTrait;
+    use ProcessOutputMapperTrait;
 
     /**
      * Init Controller.
@@ -22,6 +26,8 @@ trait BlockedUserRoutes
     public function onConstruct()
     {
         $this->model = new BlockedUsers();
+        $this->dto = BlockedUser::class;
+        $this->dtoMapper = new MappersBlockedUser();
 
         $this->additionalSearchFields = [
             ['is_deleted', ':', 0],
@@ -65,6 +71,8 @@ trait BlockedUserRoutes
             $blockedUser->saveOrFail();
         }
 
-        return $this->response($blockedUser);
+        return $this->response(
+            $this->processOutput($blockedUser)
+        );
     }
 }

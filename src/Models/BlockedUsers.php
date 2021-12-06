@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Kanvas\Moderation\Models;
 
+use Baka\Contracts\Auth\UserInterface;
 use Baka\Contracts\EventsManager\EventManagerAwareTrait;
 use Canvas\Models\Users;
 
@@ -51,5 +52,29 @@ class BlockedUsers extends BaseModel
     public function afterCreate()
     {
         $this->fire('moderation:blockedUser', $this);
+    }
+
+
+    /**
+     * Verify if the user blocked the verify user.
+     *
+     * @param UserInterface $user
+     * @param UserInterface $verifyUser
+     *
+     * @return bool
+     */
+    public static function isBlocked(UserInterface $user, UserInterface $verifyUser) : bool
+    {
+        if ($user->getId() === $verifyUser->getId()) {
+            return false;
+        }
+
+        return (bool) self::count([
+            'conditions' => 'users_id = ?0 AND blocked_users_id = ?1',
+            'bind' => [
+                $user->getId(),
+                $verifyUser->getId()
+            ]
+        ]);
     }
 }
