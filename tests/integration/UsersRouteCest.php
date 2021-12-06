@@ -19,7 +19,7 @@ class UsersRouteCest
         $content = json_decode($response->getContent(), true);
 
         $I->assertEquals(200, $response->getStatusCode());
-        $I->assertEquals($user->getId(), $content['is_blocked']);
+        $I->assertEquals($user->getId(), $content['id']);
     }
 
     public function testCantBlockMyself(IntegrationTester $I) : void
