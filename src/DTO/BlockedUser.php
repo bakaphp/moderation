@@ -11,6 +11,6 @@ class BlockedUser
     public int $is_blocked = 0;
     public string $firstname;
     public string $lastname;
-    public array $photo = [];
+    public ?object $photo = null;
     public string $created_at;
 }
