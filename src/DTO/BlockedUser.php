@@ -8,7 +8,7 @@ class BlockedUser
 {
     public int $id;
     public string $display_name;
-    public int $is_blocked = 0;
+    public int $is_blocked = 1;
     public string $firstname;
     public string $lastname;
     public ?object $photo = null;
