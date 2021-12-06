@@ -15,8 +15,9 @@ use Phalcon\Http\Response;
 
 trait BlockedUserRoutes
 {
-    use CrudBehaviorTrait;
-    use ProcessOutputMapperTrait;
+    use CrudBehaviorTrait, ProcessOutputMapperTrait{
+        ProcessOutputMapperTrait::processOutput insteadof CrudBehaviorTrait;
+    }
 
     /**
      * Init Controller.
