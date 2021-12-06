@@ -25,6 +25,7 @@ class BlockedUser extends CustomMapper
         $blockedUser->firstname = $blocked->blockedUser->firstname;
         $blockedUser->lastname = $blocked->blockedUser->lastname;
         $blockedUser->photo = $blocked->blockedUser->getPhoto();
+        $blockedUser->is_blocked = (int) !$blocked->is_deleted;
         $blockedUser->created_at = $blocked->created_at;
 
         return $blockedUser;
