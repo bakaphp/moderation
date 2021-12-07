@@ -11,14 +11,6 @@ trait ReportableTypesRoutes
 {
     use CrudBehaviorTrait;
 
-    protected $createFields = [
-        'entity_namespace',
-        'entity_id',
-        'report_type_id',
-        'title',
-        'description',
-    ];
-
     /**
      * Init Controller.
      *
