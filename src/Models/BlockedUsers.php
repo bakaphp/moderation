@@ -70,10 +70,12 @@ class BlockedUsers extends BaseModel
         }
 
         return (bool) self::count([
-            'conditions' => 'users_id = ?0 AND blocked_users_id = ?1',
+            'conditions' => 'users_id = :users_id: 
+                            AND blocked_users_id = :blocked_users_id: 
+                            AND is_deleted = 0',
             'bind' => [
-                $user->getId(),
-                $verifyUser->getId()
+                'users_id' => $user->getId(),
+                'blocked_users_id' => $verifyUser->getId()
             ]
         ]);
     }
