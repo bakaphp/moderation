@@ -16,7 +16,7 @@ class Reports extends BaseModel implements ReportInterface
     public string $entity_namespace;
     public string $entity_id;
     public int $report_type_id;
-    public int $user_id;
+    public int $users_id;
     public int $report_status_id;
     public string $title;
     public ?string $description = null;
@@ -56,6 +56,16 @@ class Reports extends BaseModel implements ReportInterface
             'id',
             [
                 'alias' => 'status',
+                'reusable' => true
+            ]
+        );
+
+        $this->belongsTo(
+            'users_id',
+            Users::class,
+            'id',
+            [
+                'alias' => 'users',
                 'reusable' => true
             ]
         );
