@@ -7,7 +7,7 @@ class ReportsComments extends BaseModel
 {
     public int $reports_id;
     public int $users_id;
-    public int $is_solution;
+    public int $is_solution = 0;
     public ?string $comment = null;
 
     /**
@@ -16,7 +16,7 @@ class ReportsComments extends BaseModel
     public function initialize()
     {
         parent::initialize();
-        $this->setSource('reports');
+        $this->setSource('reports_comments');
 
         $this->belongsTo(
             'users_id',
