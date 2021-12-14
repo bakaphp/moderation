@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Kanvas\Moderation\Models;
 
-use Baka\Database\Model;
+use Canvas\Models\AbstractModel;
 
-class BaseModel extends Model
+class BaseModel extends AbstractModel
 {
     /**
      * Initialize method for model and specify local db connection.
