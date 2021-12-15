@@ -33,6 +33,23 @@ class Reports
 
 
     /**
+     * Change Report status
+     *
+     * @param ModelsReports $report
+     * @param string $status
+     * @return ModelsReports
+     */
+    public static function changeReportStatus(ModelsReports $report, string $status = 'solved') : ModelsReports
+    {
+        $status = self::getReportStatusByName($status);
+
+        $report->report_status_id = $status;
+        $report->saveOrFail();
+
+        return $report;
+    }
+
+    /**
      * Get Report type Status id by name
      *
      * @param string $status
