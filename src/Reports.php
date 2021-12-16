@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kanvas\Moderation\Services;
+namespace Kanvas\Moderation;
 
 use Kanvas\Moderation\Enums\Report as ReportStatus;
 use Kanvas\Moderation\Models\Reports as ModelsReports;
@@ -31,6 +31,23 @@ class Reports
         ]);
     }
 
+
+    /**
+     * Change Report status
+     *
+     * @param ModelsReports $report
+     * @param string $status
+     * @return ModelsReports
+     */
+    public static function changeReportStatus(ModelsReports $report, string $status = 'solved') : ModelsReports
+    {
+        $status = self::getReportStatusByName($status);
+
+        $report->report_status_id = $status;
+        $report->saveOrFail();
+
+        return $report;
+    }
 
     /**
      * Get Report type Status id by name
