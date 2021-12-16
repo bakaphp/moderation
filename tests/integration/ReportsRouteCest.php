@@ -8,7 +8,7 @@ use IntegrationTester;
 use Kanvas\Moderation\Enums\Report;
 use Kanvas\Moderation\Models\Reports;
 use Kanvas\Moderation\Models\ReportsStatus;
-use Kanvas\Moderation\Services\Reports as ServicesReports;
+use Kanvas\Moderation\Reports as ServicesReports;
 use Kanvas\Moderation\Tests\Support\Controllers\ReportsController;
 use Kanvas\Moderation\Tests\Support\Controllers\ReportTypesController;
 use Kanvas\Moderation\Tests\Support\Models\Content;

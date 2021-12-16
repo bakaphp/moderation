@@ -9,7 +9,7 @@ use Kanvas\Moderation\Enums\Report;
 use Kanvas\Moderation\Models\Reports;
 use Kanvas\Moderation\Models\ReportsComments;
 use Kanvas\Moderation\Models\ReportsTypes;
-use Kanvas\Moderation\Services\Comments;
+use Kanvas\Moderation\Comments;
 use Kanvas\Moderation\Tests\Support\Models\Content;
 use Kanvas\Moderation\Tests\Support\Models\Users;
 

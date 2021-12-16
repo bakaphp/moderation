@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kanvas\Moderation\Services;
+namespace Kanvas\Moderation;
 
 use Kanvas\Moderation\Enums\Report as ReportStatus;
 use Kanvas\Moderation\Models\Reports as ModelsReports;

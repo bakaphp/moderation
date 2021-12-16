@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kanvas\Moderation\Services;
+namespace Kanvas\Moderation;
 
 use Baka\Contracts\Auth\UserInterface;
 use Kanvas\Moderation\Models\Reports as ModelsReports;
@@ -27,7 +27,7 @@ class Comments
         $newComment->users_id = $user->getId();
         $newComment->comment = $comment;
 
-        if($isSolution && $report->report_status_id != ReportStatus::SOLVED) {
+        if($isSolution && $report->report_status_id !== ReportStatus::SOLVED) {
             $newComment->is_solution = (int) $isSolution;
             Reports::changeReportStatus($report);
             $report->solved_by = $newComment->users_id;
