@@ -11,6 +11,6 @@ class Users extends BaseModel implements UserInterface
 {
     public function getId() : int
     {
-        return 1;
+        return $this->id ?? 1;
     }
 }
