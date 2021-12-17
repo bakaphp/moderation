@@ -8,9 +8,10 @@ use Baka\Contracts\Http\Api\CrudBehaviorTrait;
 use Baka\Http\Exception\BadRequestException;
 use Canvas\Contracts\Controllers\ProcessOutputMapperTrait;
 use Canvas\Models\Users;
+use Kanvas\Moderation\BlockUsers;
 use Kanvas\Moderation\DTO\BlockedUser;
 use Kanvas\Moderation\Mappers\BlockedUser as MappersBlockedUser;
-use Kanvas\Moderation\Models\BlockedUsers;
+use Kanvas\Moderation\Models\BlockedUsers as BlockedUsersModel;
 use Phalcon\Http\Response;
 
 trait BlockedUserRoutes
@@ -26,7 +27,7 @@ trait BlockedUserRoutes
      */
     public function onConstruct()
     {
-        $this->model = new BlockedUsers();
+        $this->model = new BlockedUsersModel();
         $this->dto = BlockedUser::class;
         $this->dtoMapper = new MappersBlockedUser();
 
@@ -52,24 +53,14 @@ trait BlockedUserRoutes
 
         $user = Users::findFirstOrFail($userId);
 
-        $blockedUser = BlockedUsers::findFirst([
-            'conditions' => 'users_id = :users_id:
-                            AND blocked_users_id = :blocked_users_id:
-                            AND is_deleted = 0',
-            'bind' => [
-                'users_id' => $this->userData->getId(),
-                'blocked_users_id' => $user->getId()
-            ]
-        ]);
-
-        if ($blockedUser) {
-            $blockedUser->softDelete();
+        if (BlockUsers::isBlocked($this->userData, $user)) {
+            $blockedUser = BlockUsers::unBlock($this->userData, $user);
         } else {
-            $blockedUser = new BlockedUsers();
-            $blockedUser->users_id = $this->userData->getId();
-            $blockedUser->blocked_users_id = $user->getId();
-            $blockedUser->apps_id = $this->app->getId();
-            $blockedUser->saveOrFail();
+            $blockedUser = BlockUsers::block(
+                $this->userData, 
+                $user, 
+                $this->app
+            );
         }
 
         return $this->response(
