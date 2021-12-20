@@ -85,6 +85,22 @@ class Reports extends BaseModel
     }
 
     /**
+     * Get comment that solve the report
+     *
+     * @return ReportsComments|null
+     */
+    public function getSolvedComment() : ?ReportsComments
+    {
+        return ReportsComments::findFirst([
+            'conditions' => 'reports_id = :report_id: AND is_solution = :is_solution: AND is_deleted = 0',
+            'bind' => [
+                'report_id' => $this->getId(),
+                'is_solution' => 1
+            ]
+        ]);
+    }
+
+    /**
      * Is this report solved?
      *
      * @return bool
