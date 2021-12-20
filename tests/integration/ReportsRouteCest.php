@@ -52,6 +52,14 @@ class ReportsRouteCest
         $I->assertEquals($results->toArray()[0]['entity_namespace'],$content['entity_namespace']);
     }
 
+    public function testGetReportsByStatus(IntegrationTester $I) : void
+    {
+        $this->generateReport();
+
+        $result = ServicesReports::getReportsByStatus('pending');
+        $I->assertEquals(Report::PENDING,$result->toArray()[0]['report_status_id']);
+    }
+
     public function testChangeReportStatus(IntegrationTester $I) : void
     {
         $this->generateReport();

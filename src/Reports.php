@@ -31,6 +31,24 @@ class Reports
         ]);
     }
 
+    /**
+     * Get all reports with a specify status, pending per default
+     *
+     * @param string $status
+     * @return ResultsetInterface
+     */
+    public static function getReportsByStatus(string $status = 'pending') : ResultsetInterface
+    {
+        $status = self::getReportStatusByName($status);
+
+        return ModelsReports::find([
+            'conditions' => 'report_status_id = :status_id: AND is_deleted = 0',
+            'bind' => [
+                'status_id' => $status
+            ]
+        ]);
+    }
+
 
     /**
      * Change Report status
