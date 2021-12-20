@@ -24,6 +24,7 @@ class CommentsCest
         $response = Comments::add($report, $comment, new Users(), true);
 
         $I->assertEquals($comment, $response->comment);
+        $I->assertEquals($response->getId(), $report->getSolvedComment()->getId());
     }
 
     public function removeComment(IntegrationTester $I) : void
