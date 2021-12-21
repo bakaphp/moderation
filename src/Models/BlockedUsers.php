@@ -49,7 +49,7 @@ class BlockedUsers extends BaseModel
      *
      * @return void
      */
-    public function afterCreate()
+    public function afterSave()
     {
         $this->fire('moderation:blockedUser', $this);
     }
