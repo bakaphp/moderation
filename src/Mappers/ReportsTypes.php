@@ -10,10 +10,10 @@ class ReportsTypes extends CustomMapper
 {
 
     /**
-     * Undocumented function.
+     * Map report types data.
      *
-     * @param ReportsTypes $reportTypeDto
      * @param ReportsTypes $reportType
+     * @param ReportsTypesDto $reportTypeDto
      * @param array $context
      *
      * @return void
