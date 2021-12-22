@@ -10,7 +10,7 @@ class BlockedUser extends CustomMapper
 {
 
     /**
-     * Undocumented function.
+     * Map blocked user data.
      *
      * @param Users $user
      * @param Profile $profile
