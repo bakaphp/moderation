@@ -127,6 +127,6 @@ class Reports extends BaseModel
      */
     public function afterSave()
     {
-        $this->fire('moderation:createReport', $this);
+        $this->fire('moderation:handleReports', $this);
     }
 }
